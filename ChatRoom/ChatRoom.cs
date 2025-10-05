@@ -12,7 +12,8 @@ namespace ChatRoom
         public  string Name { get; private set; }
         public  List<Message> Messages { get; private set; }
 
-        public List<User> users { get; private set; } = new List<User>();
+        public List<User> Users { get; private set; } = new List<User>();
+
 
         public ChatRoom(string name)
         {
@@ -20,12 +21,25 @@ namespace ChatRoom
             Messages = new List<Message>();       
         }
 
+        public void DeleteMessage(Message message)
+        {
+            Messages.Remove(message);
+        }
 
+        public void EditMessage(Message message, string newText)
+        {
+            message.Text = newText;
+        }
+
+        public void Logout(User user)
+        {
+            Users.Remove(user);
+        }
 
 
         public void Join(User user)
         {
-            users.Add(user);
+            Users.Add(user);
         }
         
         public void DisplayMessages()

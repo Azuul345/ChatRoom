@@ -5,30 +5,35 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ChatRoom
+
 {
+    public enum UserRole 
+    {
+        Admin,
+        Regular
+    }
     public class User
     {
-
-        //private string _name;
-        //private string _password;
 
         public string Name { get; private set; }
         public string Password { get; private set; }
 
-        public User(string name, string password)
+        public UserRole Role { get; private set; }
+
+        public User(string name, string password, UserRole role)
         {
             Name = name;
             Password = password;
+            Role = role;
 
         }
 
 
-        //public static User RegisterNewChatter(string name, string password)
-        //{
-        //    return new User(name, password);
-            
-        //}
+        public static User RegisterNewChatter(string name, string password, UserRole role)
+        {
+            return new User(name, password, role);
 
+        }
 
     }
 }
